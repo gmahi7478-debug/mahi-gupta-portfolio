@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* The Engineering Editorial — Dark mode (primary) */
+    --background: #1A1816;
+    --surface: #242220;
+    --elevated: #2E2B26;
+    --border-subtle: #3A3734;
+    --border: #4A4744;
+    --foreground: #F5F2ED;
+    --muted: #948E88;
+    --subtle: #736D67;
+    --accent: #C4A882;
+    --accent-hover: #D4BA96;
+    --accent-muted: rgba(196, 168, 130, 0.12);
+
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --background: #FAF8F5;
+      --surface: #FFFFFF;
+      --elevated: #F5F2ED;
+      --border-subtle: #E8E4DE;
+      --border: #D4CFC6;
+      --foreground: #1A1816;
+      --muted: #6B6560;
+      --subtle: #9B958F;
+      --accent: #8B7A5E;
+      --accent-hover: #7A6B50;
+      --accent-muted: rgba(139, 122, 94, 0.10);
+
+      color-scheme: light;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+}
+
+@layer components {
+  .nav-scrolled {
+    background-color: color-mix(in srgb, var(--background) 92%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .intro-drop-cap::first-letter {
+    font-family: var(--font-display);
+    font-size: 3.4em;
+    float: left;
+    line-height: 0.82;
+    padding-right: 0.18em;
+    padding-top: 0.04em;
+    color: var(--accent);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--accent) 0%,
+      var(--border-subtle) 30%,
+      transparent 100%
+    );
+  }
+}
